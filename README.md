@@ -8,14 +8,6 @@
 
 <br/><br/>
 
-```
- ██╗   ██╗██████╗ ██╗    ███████╗██╗  ██╗██╗███████╗██╗     ██████╗ 
- ██║   ██║██╔══██╗██║    ██╔════╝██║  ██║██║██╔════╝██║     ██╔══██╗
- ██║   ██║██████╔╝██║    ███████╗███████║██║█████╗  ██║     ██║  ██║
- ██║   ██║██╔═══╝ ██║    ╚════██║██╔══██║██║██╔══╝  ██║     ██║  ██║
- ╚██████╔╝██║     ██║    ███████║██║  ██║██║███████╗███████╗██████╔╝
-  ╚═════╝ ╚═╝     ╚═╝    ╚══════╝╚═╝  ╚═╝╚═╝╚══════╝╚══════╝╚═════╝ 
-```
 
 # 🛡️ UPI Shield — AI-Powered Fraud Detection System
 
@@ -35,13 +27,13 @@
 <div align="center">
 
 ### 🏠 Overview Home — Landing Dashboard
-![UPI Shield Home Page](screenshots/home_hero.png)
+![UPI Shield Home Page](screenshots/dashboard.png)
 
 ### 🔍 Fraud Analyzer — Real-Time Detection Engine
 ![Fraud Analyzer](screenshots/fraud_analyzer.png)
 
 ### 📊 Analytics Dashboard
-![Analytics Dashboard](screenshots/dashboard.png)
+![Analytics Dashboard](screenshots/home_hero.png)
 
 </div>
 
