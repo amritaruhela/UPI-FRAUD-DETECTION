@@ -9,6 +9,7 @@ import csv
 import io
 import random
 from datetime import datetime, timedelta
+import hashlib
 
 app = Flask(__name__)
 
@@ -336,6 +337,31 @@ def batch_predict():
         }
     })
 
+USERS={}
+@app.route('/api/auth/signup', methods=['POST'])
+def signup():
+    data = request.get_json()
+    username = data.get('username', '').strip()
+    password = data.get('password', '').strip()
+    if not username or not password:
+        return jsonify({'error': 'Username and password required'}), 400
+    if username in USERS:
+        return jsonify({'error': 'Username already exists'}), 409
+    USERS[username] = hashlib.sha256(password.encode()).hexdigest()
+    return jsonify({'message': 'Account created', 'username': username}), 201
 
+@app.route('/api/auth/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    username = data.get('username', '').strip()
+    password = data.get('password', '').strip()
+    hashed = hashlib.sha256(password.encode()).hexdigest()
+    if USERS.get(username) != hashed:
+        return jsonify({'error': 'Invalid credentials'}), 401
+    return jsonify({'message': 'Login successful', 'username': username}), 200
+
+@app.route('/api/auth/me', methods=['GET'])
+def me():
+    return jsonify({'username': 'guest', 'logged_in': False}), 200
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
