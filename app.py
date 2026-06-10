@@ -348,8 +348,13 @@ def signup():
     if username in USERS:
         return jsonify({'error': 'Username already exists'}), 409
     USERS[username] = hashlib.sha256(password.encode()).hexdigest()
-    return jsonify({'message': 'Account created', 'username': username}), 201
-
+    return jsonify({
+    'success': True,
+    'message': 'Account created',
+    'username': username,
+    'user': { 'username': username, 'id': 1 },
+    'token': 'demo-token-' + username   # in case JS expects a token
+}), 201
 @app.route('/api/auth/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -362,6 +367,9 @@ def login():
 
 @app.route('/api/auth/me', methods=['GET'])
 def me():
-    return jsonify({'username': 'guest', 'logged_in': False}), 200
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+   return jsonify({
+        'success': False,
+        'logged_in': False,
+        'username': None,
+        'user': None
+    }), 200
